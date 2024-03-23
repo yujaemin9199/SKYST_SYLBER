@@ -33,7 +33,7 @@ exports.removeFlower = (id, index) => {
   }
   const flowerPos = userlist[pos].flowers.findIndex((flr) => flr.index === index);
   if(flowerPos<0){
-    throw new Error('Failed to remove flower : Flower Index Not Found');
+    throw new Error(`Failed to remove flower : Flower Index Not Found ${typeof(index)}, ${index}`);
   }
   let flower = userlist[pos].flowers[flowerPos];
   
