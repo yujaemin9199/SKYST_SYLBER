@@ -1,5 +1,4 @@
 const Flower = require('../class/flowerclass');
-const Seed = require('../class/seedclass');
 const fs = require('fs');
 
 let userlist = JSON.parse(fs.readFileSync('userlist.json', 'utf8'));
@@ -7,13 +6,13 @@ exports.list = () => {
   return userlist.map(({ id }) => ({ id }));
 };
 
-exports.addFlower = (id, type) => {
+exports.addFlower = (id, type, location, from="", context = "") => {
   const pos = userlist.findIndex((usr) => usr.id === id );
   if(pos<0){
     throw new Error('Failed to add flower : User Not Found');
   }
   userlist[pos].flrmaxindex += 1;
-  userlist[pos].flowers.push(new Flower(userlist[pos].flrmaxindex, type, 0));
+  userlist[pos].flowers.push(new Flower(userlist[pos].flrmaxindex, type, 0, location, from, context));
 
   console.log("Flower adding SUCCESS");
   fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
@@ -71,7 +70,8 @@ exports.removeSeed = (id) => {
   if(pos<0){
     throw new Error('Failed to remove flower : User Not Found');
   }
-  userlistp[pos].seeds -= 1;
+  userlist[pos].seeds -= 1;
+  return userlist[pos].seeds;
 };
 
 exports.getinfo = (id) => {
@@ -84,6 +84,7 @@ exports.getinfo = (id) => {
   }
   return usr;
 };
+
 
 exports.register = (id, pw) => {
   const usr = {
