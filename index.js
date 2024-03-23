@@ -21,11 +21,19 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.status(500);
-  console.log("Request Failed");
   res.json({
     result: 'fail',
     error: err.message,
   });
 });
+
+const getUserApi = async (username) => {
+  try {
+    const { data } = axios.get(`${baseUrl}/user`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 app.listen(3000);

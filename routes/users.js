@@ -28,11 +28,13 @@ router.post('/', (req, res, next) => {
     const {id, pw} = req.body;
     const usr = userList.register(id, pw);
     res.json(usr);
-    console.log("User registered");
+    console.log("User register attempt");
   } catch(e){
     console.log("Register Failed");
     next(e);
   }
+
+  console.log("Register SUCCESS");
 });
 
 module.exports = router;
