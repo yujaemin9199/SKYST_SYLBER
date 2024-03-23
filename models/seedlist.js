@@ -18,7 +18,7 @@ let seedlist = [
     );
   
     if (!Name) {
-      throw new Error('Flower not found');
+      throw new Error('seed not found');
     }
     return Name.name;
   };
