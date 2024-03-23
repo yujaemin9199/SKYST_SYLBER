@@ -1,10 +1,12 @@
 const Flower = require('../class/flowerclass');
+const Seed = require('../class/seedclass')
 
 let userlist = [
   { 
     id: 'sjb', 
     pw: 'first note',
-    flowers: []
+    flowers: [],
+    seeds: []
   }
 ];
 
@@ -22,7 +24,15 @@ exports.addFlower = (id) => {
   }
   userlist[pos].flowers.push(new Flower(1, 0));
   console.log("Flower adding SUCCESS");
-  return userlist[id];
+};
+
+exports.addSeed = (id) => {
+  const pos = userlist.findIndex((usr) => usr.id === id );
+  if(pos<0){
+    throw new Error('Failed to add seed : User Not Found');
+  }
+  userlist[pos].seeds.push(new Seed(1));
+  console.log("Seed adding SUCCESS");
 };
 
 exports.getinfo = (id) => {
