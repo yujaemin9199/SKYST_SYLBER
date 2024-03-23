@@ -118,12 +118,8 @@ router.get('/:id/SD', (req, res, next) => {
 router.get('/:id/SP', (req, res, next) => {
   const id = req.params.id;
   try{
-    if(userList.removeSeed(id)+1){
-      userList.addFlower(id, (Math.floor(Math.random() * 7)), 0);
-    }
-    else{
-      userList.addSeed(id);
-    }
+    userList.addFlower(id, (Math.floor(Math.random() * 7)), 0);
+  
     const usr = userList.getinfo(id);
     res.json(usr);
   }catch(e){
