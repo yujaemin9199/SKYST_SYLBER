@@ -1,19 +1,8 @@
-class flower {
-    constructor({index, name, growth}) {
-        this.index = index;
-        this.name = name;
+module.exports = class Flower {
+    constructor({type, growth}) {
+        this.type = type;
         this.growth = growth;
-    }
-    growth() {
-        return `${this.name}이 ${this.growth}% 자라났습니다!`
-    }
-    set index(newIndex) {
-        this.index = newIndex;
-    }
-    set name(newName) {
-        this.name = newName;
-    }
-    set growth(newGrowth) {
-        this.growth = newGrowth;
+        this.index = 0;
+        this.location = -1;
     }
 }

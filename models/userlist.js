@@ -1,7 +1,10 @@
+const Flower = require('../class/flowerclass');
+
 let userlist = [
   { 
     id: 'sjb', 
     pw: 'first note',
+    flowers: []
   }
 ];
 
@@ -10,6 +13,15 @@ exports.list = () => {
     id,
     pw,
   }));
+};
+
+exports.addFlower = (id) => {
+  const pos = userlist.findIndex((usr) => usr.id === id );
+  if(pos<0){
+    throw new Error('Failed to add flower : User Not Found');
+  }
+  userlist[pos].flowers.push(new Flower(1, 0));
+  console.log("Flower adding SUCCESS");
 };
 
 exports.getinfo = (id) => {
@@ -27,6 +39,7 @@ exports.register = (id, pw) => {
   const usr = {
     id,
     pw,
+    flowers:[],
   };
   userlist.push(usr);
   return usr;

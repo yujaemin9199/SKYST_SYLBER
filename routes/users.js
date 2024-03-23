@@ -37,4 +37,19 @@ router.post('/', (req, res, next) => {
   console.log("Register SUCCESS");
 });
 
+
+router.get('/:id/FA', (req, res, next) => {
+  const id = req.params.id;
+
+  try{
+    console.log(`Flower adding to ${id}...`);
+    userList.addFlower(id);
+    res.json(userList[id]);
+  }catch(e){
+    console.log(e);
+    next(e);
+  }
+});
+
+
 module.exports = router;
