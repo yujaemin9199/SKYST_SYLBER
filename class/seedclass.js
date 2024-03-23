@@ -1,6 +1,6 @@
 module.exports = class Seed {
-    constructor(type, growth) {
+    constructor(index, type) {
+        this.index = index;
         this.type = type;
-        this.growth = growth;
     }
 }

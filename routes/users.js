@@ -58,7 +58,7 @@ router.get('/:id/FD/:index', (req, res, next) => {
   let index = req.params.index;
   index = Number(index);
   try{
-    console.log(`Flower Deleting ${id}'s index:${index}, ${typeof(index)}...`);
+    console.log(`Flower Deleting ${id}'s index:${index}...`);
     const flower = userList.removeFlower(id, index);
     const usr = userList.getinfo(id);
     res.json(flower);
@@ -83,5 +83,20 @@ router.get('/:id/SA', (req, res, next) => {
   }
 });
 
+router.get('/:id/SD/:index', (req, res, next) => {
+  const id = req.params.id;
+  //const {index} = req.body;
+  let index = req.params.index;
+  index = Number(index);
+  try{
+    console.log(`Seed Deleting ${id}'s index:${index}...`);
+    const seed = userList.removeSeed(id, index);
+    const usr = userList.getinfo(id);
+    res.json(seed);
+  }catch(e){
+    console.log(e);
+    next(e);
+  }
+});
 
 module.exports = router;
