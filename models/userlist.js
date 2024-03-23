@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let userlist = JSON.parse(fs.readFileSync('userlist.json', 'utf8'));
 exports.list = () => {
-  return userlist.map(({ id }) => ( id ));
+  return userlist.map(({ id }) => ({ id }));
 };
 
 exports.addFlower = (id, type) => {
@@ -31,7 +31,7 @@ exports.removeFlower = (id, index) => {
   let flower = userlist[pos].flowers[flowerPos];
   
   userlist[pos].flowers = userlist[pos].flowers.filter((flr) => flr.index != index);
-
+m
   console.log("Flower Remove SUCCESS");
 
   fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
@@ -104,6 +104,9 @@ exports.register = (id, pw) => {
     id,
     pw,
     flowers:[],
+    seeds:[],
+    flrmaxindex:-1,
+    seedmaxindex:1
   };
   userlist.push(usr);
   fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
