@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let userlist = JSON.parse(fs.readFileSync('userlist.json', 'utf8'));
 exports.list = () => {
-  return userlist.map(({ id }) => ({ id }));
+  return userlist.map(({ id }) => ( id ));
 };
 
 exports.addFlower = (id, type) => {
