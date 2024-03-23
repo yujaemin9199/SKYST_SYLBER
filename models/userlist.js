@@ -29,6 +29,6 @@ exports.register = (id, pw) => {
     id,
     pw,
   };
-  userList.push(usr);
+  userlist.push(usr);
   return usr;
 };
