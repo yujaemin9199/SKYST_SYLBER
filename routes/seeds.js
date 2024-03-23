@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
   const seed = seedList.list();
-  console.log("Get seed List")
+  console.log("Get seed List");
   res.json(seed);
 });
 
