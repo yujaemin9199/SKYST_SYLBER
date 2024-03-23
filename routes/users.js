@@ -56,7 +56,7 @@ router.get('/:id/SA', (req, res, next) => {
 
   try{
     console.log(`Seed adding to ${id}...`);
-    userList.addFlower(id);
+    userList.addSeed(id);
     res.json(userList[id]);
   }catch(e){
     console.log(e);
