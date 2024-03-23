@@ -2,7 +2,7 @@ let flowerlist = [
     { 
       index: '1', 
       name: 'sunflower', 
-      growth: '90%'
+      growth: '90'
     }
   ];
   
