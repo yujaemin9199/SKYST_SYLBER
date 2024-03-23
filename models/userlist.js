@@ -12,7 +12,7 @@ exports.list = () => {
   }));
 };
 
-exports.getpw = (id) => {
+exports.getinfo = (id) => {
   const usr = userlist.find(
     (usr) => usr.id === id
   );
@@ -20,7 +20,7 @@ exports.getpw = (id) => {
   if (!usr) {
     throw new Error('User not found');
   }
-  return usr.pw;
+  return usr;
 };
 
 exports.register = (id, pw) => {

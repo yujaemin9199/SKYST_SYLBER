@@ -13,14 +13,14 @@ router.get('/:id', (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const usr = userList.getpw(id);
+    const usr = userList.getinfo(id);
     res.json(usr);
-    console.log("Get password attempt");
+    console.log("Get User Info attempt");
   } catch (e) {
-    console.log("Get password FAILED");
+    console.log("Get User Info FAILED");
     next(e);
   }
-  console.log("Get password SUCCESS");
+  console.log("Get User Info SUCCESS");
 });
 
 router.post('/', (req, res, next) => {
