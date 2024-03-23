@@ -1,8 +1,6 @@
-class seed {
-    constructor({type}) {
+module.exports = class Seed {
+    constructor(type, growth) {
         this.type = type;
-    }
-    set type(newType) {
-        this.type = newType;
+        this.growth = growth;
     }
 }
