@@ -35,7 +35,7 @@ exports.removeFlower = (id, index) => {
   if(flowerPos<0){
     throw new Error('Failed to remove flower : Flower Index Not Found');
   }
-  flower = userlist[pos].flowers[flowerPos];
+  let flower = userlist[pos].flowers[flowerPos];
   
   userlist[pos].flowers = userlist[pos].flowers.filter((flr) => flr.index != index);
 

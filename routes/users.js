@@ -55,7 +55,6 @@ router.get('/:id/FA', (req, res, next) => {
 router.post('/:id/DA', (req, res, next) => {
   const id = req.params.id;
   const {index} = req.body;
-  index = Number(index);
 
   try{
     console.log(`Flower Deleting ${id}'s index:${index}...`);
