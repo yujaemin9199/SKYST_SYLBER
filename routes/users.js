@@ -15,11 +15,12 @@ router.get('/:id', (req, res, next) => {
   try {
     const usr = userList.getpw(id);
     res.json(usr);
+    console.log("Get password attempt");
   } catch (e) {
-    console.log("Get password Failed");
+    console.log("Get password FAILED");
     next(e);
   }
-  console.log("Get password");
+  console.log("Get password SUCCESS");
 });
 
 router.post('/', (req, res, next) => {
