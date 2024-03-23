@@ -7,7 +7,7 @@ let flowerlist = [
   ];
   
   exports.list = () => {
-    return userlist.map(({ index, name, growth }) => ({
+    return flowerlist.map(({ index, name, growth }) => ({
       index,
       name,
       growth,

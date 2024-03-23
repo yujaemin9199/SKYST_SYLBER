@@ -6,7 +6,7 @@ let seedlist = [
   ];
   
   exports.list = () => {
-    return userlist.map(({ index, name}) => ({
+    return seedlist.map(({ index, name}) => ({
       index,
       name,
     }));
