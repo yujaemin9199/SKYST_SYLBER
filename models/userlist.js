@@ -1,17 +1,8 @@
 const Flower = require('../class/flowerclass');
 const Seed = require('../class/seedclass');
+const fs = require('fs');
 
-let userlist = [
-  { 
-    id: 'sjb', 
-    pw: 'first note',
-    flowers: [],
-    seeds: [],
-    flrmaxindex: -1,
-    seedmaxindex: -1,
-  }
-];
-
+let userlist = JSON.parse(fs.readFileSync('userlist.json', 'utf8'));
 exports.list = () => {
   return userlist.map(({ id }) => ({ id }));
 };
@@ -25,6 +16,7 @@ exports.addFlower = (id, type) => {
   userlist[pos].flowers.push(new Flower(userlist[pos].flrmaxindex, type, 0));
 
   console.log("Flower adding SUCCESS");
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
 };
 
 exports.removeFlower = (id, index) => {
@@ -41,7 +33,10 @@ exports.removeFlower = (id, index) => {
   userlist[pos].flowers = userlist[pos].flowers.filter((flr) => flr.index != index);
 
   console.log("Flower Remove SUCCESS");
+
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
   return flower;
+  
 };
 
 exports.FlowerGrow = (id, index, val) => {
@@ -57,17 +52,21 @@ exports.FlowerGrow = (id, index, val) => {
   userlist[pos].flowers[flowerPos].growth += val;
   
   console.log("Flower Grow SUCCESS");
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
+
 }
 
-exports.addSeed = (id) => {
+exports.addSeed = (id, type) => {
   const pos = userlist.findIndex((usr) => usr.id === id );
   if(pos<0){
     throw new Error('Failed to add seed : User Not Found');
   }
   userlist[pos].seedmaxindex += 1;
-  userlist[pos].seeds.push(new Seed(userlist[pos].seedmaxindex, 1));
+  userlist[pos].seeds.push(new Seed(userlist[pos].seedmaxindex, type));
 
   console.log("Seed adding SUCCESS");
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
+  
 };
 
 exports.removeSeed = (id, index) => {
@@ -84,6 +83,8 @@ exports.removeSeed = (id, index) => {
   userlist[pos].seeds = userlist[pos].seeds.filter((seed) => seed.index != index);
 
   console.log("Seed Remove SUCCESS");
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
+  
   return seed;
 };
 
@@ -105,5 +106,7 @@ exports.register = (id, pw) => {
     flowers:[],
   };
   userlist.push(usr);
+  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
+
   return usr;
 };

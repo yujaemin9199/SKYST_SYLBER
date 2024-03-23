@@ -88,12 +88,13 @@ router.get('/:id/FG/:index/:val', (req, res, next) => {
   }
 });
 
-router.get('/:id/SA', (req, res, next) => {
+router.get('/:id/SA/:type', (req, res, next) => {
   const id = req.params.id;
-
+  let type = req.params.type;
+  type = Number(type);
   try{
     console.log(`Seed adding to ${id}...`);
-    userList.addSeed(id);
+    userList.addSeed(id, type);
     const usr = userList.getinfo(id);
     res.json(usr);
   }catch(e){
