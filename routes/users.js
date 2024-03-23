@@ -19,4 +19,10 @@ router.get('/:id', (req, res, next) => {
   }
 });
 
+router.post('/user', (req, res, next) => {
+  const {id, pw} = req.body;
+  const note = Note.register(id, pw);
+  res.json(note);
+});
+
 module.exports = router;
