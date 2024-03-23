@@ -52,14 +52,15 @@ router.get('/:id/FA', (req, res, next) => {
   }
 });
 
-router.post('/:id/DA', (req, res, next) => {
+router.get('/:id/FD/:index', (req, res, next) => {
   const id = req.params.id;
-  const {index} = req.body;
-
+  //const {index} = req.body;
+  let index = req.params.index;
+  index = Number(index);
   try{
-    console.log(`Flower Deleting ${id}'s index:${index}...`);
-    const flower = userList.removeFlower(id);
-    const usr = userlist.getinfo(id,index);
+    console.log(`Flower Deleting ${id}'s index:${index}, ${typeof(index)}...`);
+    const flower = userList.removeFlower(id, index);
+    const usr = userList.getinfo(id);
     res.json(flower);
   }catch(e){
     console.log(e);
