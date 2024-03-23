@@ -44,13 +44,28 @@ router.get('/:id/FA', (req, res, next) => {
   try{
     console.log(`Flower adding to ${id}...`);
     userList.addFlower(id);
-    res.json(userList[id]);
+    const usr = userList.getinfo(id);
+    res.json(usr);
   }catch(e){
     console.log(e);
     next(e);
   }
 });
 
+router.post('/:id/DA', (req, res, next) => {
+  const id = req.params.id;
+  const {index} = req.body;
+
+  try{
+    console.log(`Flower Deleting ${id}'s index:${index}...`);
+    const flower = userList.removeFlower(id);
+    const usr = userlist.getinfo(id);
+    res.json(flower);
+  }catch(e){
+    console.log(e);
+    next(e);
+  }
+});
 
 
 router.get('/:id/SA', (req, res, next) => {
