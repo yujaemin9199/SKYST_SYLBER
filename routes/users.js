@@ -44,7 +44,8 @@ router.get('/:id/FA', (req, res, next) => {
   try{
     console.log(`Flower adding to ${id}...`);
     userList.addFlower(id);
-    res.json(userList[id]);
+    const usr = userList.getinfo(id);
+    res.json(usr);
   }catch(e){
     console.log(e);
     next(e);

@@ -1,5 +1,5 @@
 module.exports = class Flower {
-    constructor({type, growth}) {
+    constructor(type, growth) {
         this.type = type;
         this.growth = growth;
         this.index = 0;

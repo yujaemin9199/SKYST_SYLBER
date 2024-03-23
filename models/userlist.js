@@ -22,6 +22,7 @@ exports.addFlower = (id) => {
   }
   userlist[pos].flowers.push(new Flower(1, 0));
   console.log("Flower adding SUCCESS");
+  return userlist[id];
 };
 
 exports.getinfo = (id) => {
