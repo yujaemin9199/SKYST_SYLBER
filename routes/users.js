@@ -88,13 +88,11 @@ router.get('/:id/FG/:index/:val', (req, res, next) => {
   }
 });
 
-router.get('/:id/SA/:type', (req, res, next) => {
+router.get('/:id/SA', (req, res, next) => {
   const id = req.params.id;
-  let type = req.params.type;
-  type = Number(type);
   try{
-    console.log(`Seed adding to ${id}...`);
-    userList.addSeed(id, type);
+    console.log(`Seed adding to ${id}`);
+    userList.addSeed(id);
     const usr = userList.getinfo(id);
     res.json(usr);
   }catch(e){
@@ -103,14 +101,11 @@ router.get('/:id/SA/:type', (req, res, next) => {
   }
 });
 
-router.get('/:id/SD/:index', (req, res, next) => {
+router.get('/:id/SD', (req, res, next) => {
   const id = req.params.id;
-  //const {index} = req.body;
-  let index = req.params.index;
-  index = Number(index);
   try{
-    console.log(`Seed Deleting ${id}'s index:${index}...`);
-    const seed = userList.removeSeed(id, index);
+    console.log(`Seed Deleting ${id}`);
+    const seed = userList.removeSeed(id);
     const usr = userList.getinfo(id);
     res.json(seed);
   }catch(e){

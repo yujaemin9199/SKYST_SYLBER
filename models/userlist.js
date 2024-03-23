@@ -56,36 +56,22 @@ exports.FlowerGrow = (id, index, val) => {
 
 }
 
-exports.addSeed = (id, type) => {
+exports.addSeed = (id) => {
   const pos = userlist.findIndex((usr) => usr.id === id );
   if(pos<0){
     throw new Error('Failed to add seed : User Not Found');
   }
-  userlist[pos].seedmaxindex += 1;
-  userlist[pos].seeds.push(new Seed(userlist[pos].seedmaxindex, type));
+  userlist[pos].seeds += 1;
 
   console.log("Seed adding SUCCESS");
-  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
-  
 };
 
-exports.removeSeed = (id, index) => {
+exports.removeSeed = (id) => {
   const pos = userlist.findIndex((usr) => usr.id === id );
   if(pos<0){
     throw new Error('Failed to remove flower : User Not Found');
   }
-  const seedPos = userlist[pos].seeds.findIndex((seed) => seed.index === index);
-  if(seedPos<0){
-    throw new Error(`Failed to remove Seed : Seed Index Not Found ${index}`);
-  }
-  let seed = userlist[pos].seeds[seedPos];
-  
-  userlist[pos].seeds = userlist[pos].seeds.filter((seed) => seed.index != index);
-
-  console.log("Seed Remove SUCCESS");
-  fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
-  
-  return seed;
+  userlistp[pos].seeds -= 1;
 };
 
 exports.getinfo = (id) => {
@@ -104,9 +90,8 @@ exports.register = (id, pw) => {
     id,
     pw,
     flowers:[],
-    seeds:[],
+    seeds:0,
     flrmaxindex:-1,
-    seedmaxindex:1
   };
   userlist.push(usr);
   fs.writeFile( 'userlist.json', JSON.stringify(userlist), (err) => console.log(err));
