@@ -15,9 +15,9 @@ router.get('/:index', (req, res, next) => {
   try {
     const flower = flowerList.getname(index);
     res.json(flower);
-    console.log("Get password attempt");
+    console.log("Get flower name attempt");
   } catch (e) {
-    console.log("Geet password FAILED");
+    console.log("Geet flower name FAILED");
     next(e);
   }
   console.log("Get flower name SUCCESS");
