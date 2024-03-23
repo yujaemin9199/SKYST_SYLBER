@@ -15,8 +15,13 @@ router.get('/:index', (req, res, next) => {
   try {
     const seed = seedList.getname(index);
     res.json(seed);
+    console.log("Get seed name attempt");
   } catch (e) {
+    console.log("Get seed name FAILED");
     next(e);
   }
-  console.log("Get seed name");
+  console.log("Get seed name SUCCESS");
 });
+
+
+module.exports = router;
