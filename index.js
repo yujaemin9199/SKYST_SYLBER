@@ -27,13 +27,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-const getUserApi = async (username) => {
-  try {
-    const { data } = axios.get(`${baseUrl}/user`);
-    return data;
-  } catch (error) {
-    throw error;
-  }
+const cors = require('cors');
+const corsOption = {
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
 };
+app.use(cors(corsOption));
 
 app.listen(3000);
