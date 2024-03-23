@@ -59,7 +59,7 @@ router.post('/:id/DA', (req, res, next) => {
   try{
     console.log(`Flower Deleting ${id}'s index:${index}...`);
     const flower = userList.removeFlower(id);
-    const usr = userlist.getinfo(id);
+    const usr = userlist.getinfo(id, flower);
     res.json(flower);
   }catch(e){
     console.log(e);
