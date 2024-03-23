@@ -3,12 +3,12 @@ const seedList = require('../models/seedlist');
 
 const router = Router();
 
-router.get('/:seed', (req, res, next) => {
+router.get('/', (req, res, next) => {
   const seed = seedList.list();
   res.json(seed);
 });
 
-router.get('/:seed/index', (req, res, next) => {
+router.get('/:index', (req, res, next) => {
   const index = req.params.index;
 
   try {
