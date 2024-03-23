@@ -17,7 +17,7 @@ router.get('/:index', (req, res, next) => {
     res.json(flower);
     console.log("Get flower name attempt");
   } catch (e) {
-    console.log("Geet flower name FAILED");
+    console.log("Get flower name FAILED");
     next(e);
   }
   console.log("Get flower name SUCCESS");
