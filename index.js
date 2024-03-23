@@ -7,6 +7,18 @@ const app = express();
 
 app.use(express.json());
 
+// CORS 설정
+const cors = require('cors');
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use(cors(corsOptions));
+
+// Preflight 요청에 대한 응답 설정
+app.options('*', cors(corsOptions));
+
 app.use('/user', userRouter);
 app.use('/flower', flowerRouter);
 //app.use('/seed', seedRouter);
@@ -26,13 +38,5 @@ app.use((err, req, res, next) => {
     error: err.message,
   });
 });
-
-const cors = require('cors');
-const corsOption = {
-    origin: ['http://localhost:3000'],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-};
-app.use(cors(corsOption));
 
 app.listen(3000);
