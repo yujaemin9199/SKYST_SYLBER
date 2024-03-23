@@ -119,7 +119,7 @@ router.get('/:id/SP', (req, res, next) => {
   const id = req.params.id;
   try{
     if(userList.removeSeed(id)+1){
-      userList.addFlower(id, 1, 0);
+      userList.addFlower(id, (Math.floor(Math.random() * 7)), 0);
     }
     else{
       userList.addSeed(id);
