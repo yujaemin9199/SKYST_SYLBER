@@ -1,5 +1,5 @@
 const Flower = require('../class/flowerclass');
-const Seed = require('../class/seedclass')
+const Seed = require('../class/seedclass');
 
 let userlist = [
   { 
@@ -31,7 +31,7 @@ exports.addSeed = (id) => {
   if(pos<0){
     throw new Error('Failed to add seed : User Not Found');
   }
-  userlist[pos].seeds.push(new Seed(1));
+  userlist[pos].seeds.push(new Seed(1, 0));
   console.log("Seed adding SUCCESS");
 };
 
