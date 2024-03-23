@@ -9,10 +9,15 @@ app.use(express.json());
 
 // CORS 설정
 const cors = require('cors');
+// const corsOptions = {
+//     origin: 'http://localhost:3000',
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+// };
 const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: '*',
+  credentials: false,
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsOptions));
 
