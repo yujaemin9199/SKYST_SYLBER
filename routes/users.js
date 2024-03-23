@@ -21,8 +21,8 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const {id, pw} = req.body;
-  const note = userList.register(id, pw);
-  res.json(note);
+  const usr = userList.register(id, pw);
+  res.json(usr);
 });
 
 module.exports = router;
