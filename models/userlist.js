@@ -16,13 +16,13 @@ exports.list = () => {
   return userlist.map(({ id }) => ({ id }));
 };
 
-exports.addFlower = (id) => {
+exports.addFlower = (id, type) => {
   const pos = userlist.findIndex((usr) => usr.id === id );
   if(pos<0){
     throw new Error('Failed to add flower : User Not Found');
   }
   userlist[pos].flrmaxindex += 1;
-  userlist[pos].flowers.push(new Flower(userlist[pos].flrmaxindex, 1, 0));
+  userlist[pos].flowers.push(new Flower(userlist[pos].flrmaxindex, type, 0));
 
   console.log("Flower adding SUCCESS");
 };
@@ -43,6 +43,21 @@ exports.removeFlower = (id, index) => {
   console.log("Flower Remove SUCCESS");
   return flower;
 };
+
+exports.FlowerGrow = (id, index, val) => {
+  const pos = userlist.findIndex((usr) => usr.id === id );
+  if(pos<0){
+    throw new Error('Failed to Grow flower : User Not Found');
+  }
+
+  const flowerPos = userlist[pos].flowers.findIndex((flr) => flr.index === index);
+  if(flowerPos<0){
+    throw new Error(`Failed to Grow flower : Flower Index Not Found ${index}`);
+  }
+  userlist[pos].flowers[flowerPos].growth += val;
+  
+  console.log("Flower Grow SUCCESS");
+}
 
 exports.addSeed = (id) => {
   const pos = userlist.findIndex((usr) => usr.id === id );

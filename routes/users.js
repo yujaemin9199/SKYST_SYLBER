@@ -38,12 +38,14 @@ router.post('/', (req, res, next) => {
 });
 
 
-router.get('/:id/FA', (req, res, next) => {
+router.get('/:id/FA/:type', (req, res, next) => {
   const id = req.params.id;
+  let type = req.params.type;
+  type = Number(type);
 
   try{
     console.log(`Flower adding to ${id}...`);
-    userList.addFlower(id);
+    userList.addFlower(id, type);
     const usr = userList.getinfo(id);
     res.json(usr);
   }catch(e){
@@ -68,6 +70,23 @@ router.get('/:id/FD/:index', (req, res, next) => {
   }
 });
 
+router.get('/:id/FG/:index/:val', (req, res, next) => {
+  const id = req.params.id;
+  //const {index} = req.body;
+  let index = req.params.index;
+  let val = req.params.val;
+  index = Number(index);
+  val = Number(val);
+  try{
+    console.log(`Flower Growing ${id}'s index:${index}...`);
+    const flower = userList.FlowerGrow(id, index, val);
+    const usr = userList.getinfo(id);
+    res.json(flower);
+  }catch(e){
+    console.log(e);
+    next(e);
+  }
+});
 
 router.get('/:id/SA', (req, res, next) => {
   const id = req.params.id;
