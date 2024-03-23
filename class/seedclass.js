@@ -1,12 +1,8 @@
 class seed {
-    constructor({index, name}) {
-        this.index = index;
-        this.name = name;
+    constructor({type}) {
+        this.type = type;
     }
-    set index(newIndex) {
-        this.index = newIndex;
-    }
-    set name(newName) {
-        this.name = newName;
+    set type(newType) {
+        this.type = newType;
     }
 }
