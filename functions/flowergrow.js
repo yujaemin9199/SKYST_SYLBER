@@ -1,5 +1,5 @@
 function flowergrow(flower, count, growth, callback) {
-    console.log(count);
+    console.log(`${flower} is grown ${growth}%!`);
 
     if (count === 0) {
         callback();
