@@ -1,8 +1,7 @@
 let userlist = [
   { 
     id: 'sjb', 
-    pw: 'first note', 
-    
+    pw: 'first note',
   }
 ];
 
