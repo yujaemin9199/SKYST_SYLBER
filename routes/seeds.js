@@ -5,6 +5,7 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
   const seed = seedList.list();
+  console.log("Get seed List")
   res.json(seed);
 });
 
@@ -17,6 +18,5 @@ router.get('/:index', (req, res, next) => {
   } catch (e) {
     next(e);
   }
+  console.log("Get seed name");
 });
-
-module.exports = router;
