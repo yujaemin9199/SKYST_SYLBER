@@ -51,13 +51,16 @@ router.get('/:id/FA', (req, res, next) => {
   }
 });
 
+
+
 router.get('/:id/SA', (req, res, next) => {
   const id = req.params.id;
 
   try{
     console.log(`Seed adding to ${id}...`);
     userList.addSeed(id);
-    res.json(userList[id]);
+    const usr = userList.getinfo(id);
+    res.json(usr);
   }catch(e){
     console.log(e);
     next(e);

@@ -1,8 +1,8 @@
 module.exports = class Flower {
-    constructor(type, growth) {
+    constructor(index, type, growth) {
         this.type = type;
         this.growth = growth;
-        this.index = 0;
+        this.index = index;
         this.location = -1;
     }
 }

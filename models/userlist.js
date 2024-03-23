@@ -6,15 +6,14 @@ let userlist = [
     id: 'sjb', 
     pw: 'first note',
     flowers: [],
-    seeds: []
+    seeds: [],
+    maxindex: -1
+    
   }
 ];
 
 exports.list = () => {
-  return userlist.map(({ id, pw }) => ({
-    id,
-    pw,
-  }));
+  return userlist.map(({ id }) => ({ id }));
 };
 
 exports.addFlower = (id) => {
@@ -24,7 +23,7 @@ exports.addFlower = (id) => {
   }
   userlist[pos].flowers.push(new Flower(1, 0));
   console.log("Flower adding SUCCESS");
-};
+  };
 
 exports.addSeed = (id) => {
   const pos = userlist.findIndex((usr) => usr.id === id );
